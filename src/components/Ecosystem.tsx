@@ -9,9 +9,9 @@ const Ecosystem = () => {
     const partners = [
         "CryptoMondays India",
         "Cypherpunk Events",
-        "Devcon SEA",
+        "Devcon Mumbai",
         "Ethereum Foundation",
-        "Build3 Foundation",
+        "BUIDL3 Foundation",
         "Web3 Bharat"
     ];
 
@@ -24,16 +24,23 @@ const Ecosystem = () => {
                     
                     <div className="relative z-10">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Ecosystem Partners</h2>
-                            <p className="text-white/50">Collaborating with the best communities in the space.</p>
+                            <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter uppercase">Our Ecosystem</h2>
+                            <p className="text-white/60 font-bold">Built with the Ethereum community</p>
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60">
-                            {partners.map((partner, i) => (
-                                <div key={i} className="text-sm font-black tracking-widest uppercase text-center hover:text-white hover:opacity-100 transition-all cursor-default">
-                                    {partner}
+                        <div className="flex flex-col items-center gap-12">
+                            <p className="text-sm font-black uppercase tracking-[0.3em] text-white/30">Supported by:</p>
+                            <div className="flex flex-wrap justify-center gap-x-16 gap-y-8">
+                                <div className="text-xl md:text-3xl font-black tracking-tight text-center hover:text-primary transition-all cursor-default flex items-center gap-3">
+                                    Cypherpunk.space
                                 </div>
-                            ))}
+                                <div className="text-xl md:text-2xl font-black tracking-tight text-center hover:text-primary transition-all cursor-default flex items-center gap-3">
+                                    CryptoMondays 🇮🇳 India
+                                </div>
+                                <div className="text-xl md:text-2xl font-black tracking-tight text-center hover:text-secondary transition-all cursor-default flex items-center gap-3">
+                                    Cypherpunk. India 🇮🇳
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,10 +55,10 @@ const Ecosystem = () => {
                                 <AlertCircle className="w-4 h-4" /> Priority Access
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black tracking-tighter">
-                                BUILD AT <span className="text-secondary">DEVCON SEA</span>
+                                BUIDL3 AT <span className="text-secondary">Devcon Mumbai</span>
                             </h2>
                             <p className="text-white/60 text-lg leading-relaxed">
-                                Devcon is the ultimate gathering for the Ethereum ecosystem. We provide merit-based support for tickets and housing to selected BUILD3 WEEK participants. 
+                                Devcon is the ultimate gathering for the Ethereum ecosystem. We provide merit-based support for tickets and housing to selected BUIDL3 WEEK participants. 
                                 <span className="block mt-4 font-bold text-white">Limited availability. Merit-based selection only.</span>
                             </p>
                             <div className="flex flex-wrap gap-4 pt-4">
@@ -78,7 +85,7 @@ const Ecosystem = () => {
                                     <Users className="w-6 h-6 text-primary" />
                                 </div>
                                 <div>
-                                    <div className="font-bold">Builder Housing</div>
+                                    <div className="font-bold">Buidler Housing</div>
                                     <div className="text-xs text-white/40">Exclusive villa access</div>
                                 </div>
                             </div>
@@ -95,7 +102,7 @@ const Ecosystem = () => {
                         <p className="text-white/60 leading-relaxed">
                             Once accepted, you gain access to our private Telegram group where we coordinate all activities, share exclusive alpha, and connect with mentors.
                         </p>
-                        <a href="https://t.me/build3week" target="_blank" className="text-secondary font-bold hover:underline flex items-center gap-2">
+                        <a href="https://t.me/buidlweek" target="_blank" className="text-secondary font-bold hover:underline flex items-center gap-2">
                             Join Public Channel <MessageCircle className="w-4 h-4" />
                         </a>
                     </div>
@@ -106,7 +113,7 @@ const Ecosystem = () => {
                         </div>
                         <h3 className="text-2xl font-bold">Credibility & Trust</h3>
                         <p className="text-white/60 leading-relaxed">
-                            Backed by CryptoMondays and Cypherpunk Events, BUILD3 WEEK is a recognized name in the global builder ecosystem.
+                            Backed by CryptoMondays and Cypherpunk Events, BUIDL3 WEEK is a recognized name in the global buidler ecosystem.
                         </p>
                         <div className="flex gap-4">
                             <div className="px-4 py-1.5 rounded-full bg-white/5 text-xs font-bold border border-white/10">VERIFIED PROGRAM</div>

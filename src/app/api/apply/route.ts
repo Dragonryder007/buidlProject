@@ -1,34 +1,59 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs/promises';
+import path from 'path';
 
-// This is a mock database. In production, you would use Prisma/Drizzle with SQL Server/Postgres.
-let applications: any[] = [];
+const DATA_FILE = path.join(process.cwd(), 'data', 'applications.json');
+
+async function getApplications() {
+  try {
+    const data = await fs.readFile(DATA_FILE, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    return [];
+  }
+}
+
+async function saveApplications(applications: any[]) {
+  await fs.writeFile(DATA_FILE, JSON.stringify(applications, null, 2));
+}
 
 export async function POST(req: Request) {
   try {
     const data = await req.json();
     
     // Validate data
-    if (!data.email || !data.github) {
+    if (!data.email) {
       return NextResponse.json({ success: false, message: 'Missing required fields' }, { status: 400 });
     }
 
+    const applications = await getApplications();
+    
     const newApplication = {
-      id: Date.now(),
       ...data,
-      status: 'Applied',
-      createdAt: new Date().toISOString(),
+      id: data.id || Date.now(),
+      status: data.status || 'Applied',
+      createdAt: data.createdAt || new Date().toISOString(),
     };
 
-    // In production: await db.user.create({ data: newApplication })
-    applications.push(newApplication);
+    // Prevent duplicates by ID if it's already there (e.g. from localStorage sync)
+    const exists = applications.find((a: any) => a.id === newApplication.id);
+    if (!exists) {
+        applications.push(newApplication);
+        await saveApplications(applications);
+    }
 
     return NextResponse.json({ success: true, data: newApplication });
   } catch (error) {
+    console.error('API Error:', error);
     return NextResponse.json({ success: false, message: 'Internal Server Error' }, { status: 500 });
   }
 }
 
 export async function GET() {
-  // In production: const users = await db.user.findMany()
-  return NextResponse.json(applications);
+  try {
+    const applications = await getApplications();
+    return NextResponse.json(applications);
+  } catch (error) {
+    return NextResponse.json([]);
+  }
 }

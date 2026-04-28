@@ -3,9 +3,9 @@
 @theme inline {
   --color-background: #030303;
   --color-foreground: #ffffff;
-  --color-primary: #9333ea;
-  --color-secondary: #06b6d4;
-  --color-accent: #f472b6;
+  --color-primary: #d946ef;
+  --color-secondary: #9333ea;
+  --color-accent: #ff00ff;
   --color-dark-card: rgba(15, 15, 15, 0.7);
   
   --font-sans: var(--font-geist-sans);
@@ -43,11 +43,11 @@ body {
   }
   
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary;
   }
   
   .neon-glow-purple {
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+    box-shadow: 0 0 20px rgba(217, 70, 239, 0.4);
   }
   
   .neon-glow-cyan {

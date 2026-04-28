@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1777366830566,
+    "name": "Persistent Buidler",
+    "email": "test@persistent.com",
+    "phone": "+1234567890",
+    "location": "Bangalore, India",
+    "gitHub": "https://github.com/persistent",
+    "linkedinUrl": "https://twitter.com/persistent",
+    "userRole": "Independent Builder",
+    "web3Context": "I have built several smart contracts on Ethereum using Solidity. My most notable work is a DEX.",
+    "whySelectYou": "To connect with other builders and contribute to the Ethereum ecosystem.",
+    "interests": [
+      "DeFi",
+      "Infra / Protocol"
+    ],
+    "weeklyCommitment": "20+ hours",
+    "fullCommitment": "Yes",
+    "hackerHouseInterest": "Yes",
+    "seriousBuidlerEssay": "I have been building on Ethereum for 3 years, contributing to open-source projects and always delivering high-quality code on time.",
+    "telegram": "@persistent",
+    "planToBuild": "A privacy-preserving KYC solution using Zero-Knowledge Proofs on Ethereum.",
+    "bestProject": "Built a decentralized exchange on Ethereum using Solidity and React. Lead Dev. Link: https://persistent.dex",
+    "secondProject": "",
+    "builtInWeb3": "Yes",
+    "status": "Applied",
+    "createdAt": "2026-04-28T09:00:30.566Z"
+  },
+  {
+    "id": 1777367322130,
+    "name": "sindhu",
+    "email": "sindhugowdasm2222001@gmail.com",
+    "phone": "7337250724",
+    "location": "nm,",
+    "gitHub": "https://github.com/Sindhushree-gt/buidl.git",
+    "linkedinUrl": "",
+    "userRole": "Freelance Developer",
+    "web3Context": "dcfvgbhnjk",
+    "whySelectYou": "sdcfvgbhnjm",
+    "interests": [
+      "DeFi"
+    ],
+    "weeklyCommitment": "5–10 hours",
+    "fullCommitment": "Yes",
+    "hackerHouseInterest": "Yes",
+    "seriousBuidlerEssay": "edrftgyhujkl",
+    "telegram": "edrftgy",
+    "planToBuild": "esxdcfvgbhnjmk",
+    "bestProject": "awertfgyhujikl",
+    "secondProject": "asdfcgvbhnjmk,",
+    "builtInWeb3": "Yes",
+    "status": "Applied",
+    "createdAt": "2026-04-28T09:08:42.130Z"
+  }
+]

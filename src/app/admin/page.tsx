@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Filter, Loader2, RefreshCw, Search, Calendar, ChevronDown, Phone, Mail, Github, Compass, Linkedin, Globe, ExternalLink, X, CheckCircle, XCircle, Clock, User, Tag, Zap } from 'lucide-react';
-import Navbar from '@/components/Navbar';
+import { Shield, Filter, Loader2, RefreshCw, Search, Calendar, ChevronDown, Phone, Mail, Github, Compass, Linkedin, Globe, ExternalLink, X, CheckCircle, XCircle, Clock, User, Tag, Zap, Home } from 'lucide-react';
+import Link from 'next/link';
 
 interface Application {
   id: number;
@@ -23,7 +23,7 @@ interface Application {
   weeklyCommitment: string;
   fullCommitment: string;
   hackerHouseInterest: string;
-  seriousBuilderEssay: string;
+  seriousBuidlerEssay: string;
   devconInterest?: string;
   ticketSupport?: string;
   status: string;
@@ -47,7 +47,7 @@ const AdminPage = () => {
       const response = await axios.get('/api/apply');
       const apiApps = response.data;
       
-      const localApps = JSON.parse(localStorage.getItem('build3_applications') || '[]');
+      const localApps = JSON.parse(localStorage.getItem('buidl_applications') || '[]');
       const combined = [...apiApps, ...localApps.filter((la: any) => !apiApps.find((aa: any) => aa.id === la.id))];
       
       combined.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -55,7 +55,7 @@ const AdminPage = () => {
     } catch (err) {
       console.error('Error fetching applications:', err);
       // Fallback to local storage only
-      const localApps = JSON.parse(localStorage.getItem('build3_applications') || '[]');
+      const localApps = JSON.parse(localStorage.getItem('buidl_applications') || '[]');
       setApplications(localApps.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
     } finally {
       setLoading(false);
@@ -73,9 +73,9 @@ const AdminPage = () => {
       // Use loose equality (==) to handle number/string ID mismatches from localStorage
       setApplications(apps => apps.map(app => app.id == id ? { ...app, status } : app));
 
-      const localApps = JSON.parse(localStorage.getItem('build3_applications') || '[]');
+      const localApps = JSON.parse(localStorage.getItem('buidl_applications') || '[]');
       const updatedLocal = localApps.map((a: any) => a.id == id ? { ...a, status } : a);
-      localStorage.setItem('build3_applications', JSON.stringify(updatedLocal));
+      localStorage.setItem('buidl_applications', JSON.stringify(updatedLocal));
     } catch (err) {
       console.error('Error updating status:', err);
     }
@@ -98,8 +98,15 @@ const AdminPage = () => {
   };
 
   return (
-    <main className="min-h-screen pt-32 pb-24 bg-background">
-      <Navbar />
+    <main className="min-h-screen pt-12 pb-24 bg-background">
+      <div className="container mx-auto px-6 mb-8">
+          <Link 
+            href="/"
+            className="inline-flex items-center gap-2 text-white/40 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
+          >
+            <Home className="w-4 h-4" /> Back to Home
+          </Link>
+      </div>
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-12">
@@ -341,9 +348,9 @@ const AdminPage = () => {
                             </p>
                           </div>
                           <div className="space-y-3">
-                            <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40">Serious Builder Evaluation</h4>
+                            <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40">Serious Buidler Evaluation</h4>
                             <p className="text-sm text-white/70 leading-relaxed bg-black/20 p-4 rounded-xl border border-white/5 italic">
-                              "{app.seriousBuilderEssay}"
+                              "{app.seriousBuidlerEssay}"
                             </p>
                           </div>
                         </div>
@@ -443,9 +450,9 @@ const AdminPage = () => {
                   </div>
                 </div>
 
-                {/* Builder Profile */}
+                {/* Buidler Profile */}
                 <div className="glass-card p-6 space-y-4 border-white/5">
-                  <h3 className="text-[10px] font-black uppercase tracking-widest text-secondary">Builder Profile</h3>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-secondary">Buidler Profile</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-xs text-white/30 font-bold mb-1">Experience Level</p>
@@ -488,7 +495,7 @@ const AdminPage = () => {
 
                 {/* Why Join */}
                 <div className="glass-card p-6 space-y-4 border-white/5">
-                  <h3 className="text-[10px] font-black uppercase tracking-widest text-primary">Why BUILD3 WEEK?</h3>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-primary">Why BUIDL3 WEEK?</h3>
                   <p className="text-sm text-white/80 bg-black/30 rounded-xl p-4 border border-white/5 leading-relaxed">
                     {selectedProfile.whySelectYou || '—'}
                   </p>
@@ -517,17 +524,17 @@ const AdminPage = () => {
                   </div>
                 </div>
 
-                {/* Serious Builder Essay */}
+                {/* Serious Buidler Essay */}
                 <div className="glass-card p-6 space-y-4 border-white/5">
-                  <h3 className="text-[10px] font-black uppercase tracking-widest text-accent">⚡ Serious Builder Evaluation</h3>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-accent">⚡ Serious Buidler Evaluation</h3>
                   <p className="text-sm text-white/80 bg-black/30 rounded-xl p-4 border border-accent/10 leading-relaxed italic">
-                    "{selectedProfile.seriousBuilderEssay || '—'}"
+                    "{selectedProfile.seriousBuidlerEssay || '—'}"
                   </p>
                 </div>
 
                 {/* Devcon */}
                 <div className="glass-card p-6 space-y-4 border-white/5">
-                  <h3 className="text-[10px] font-black uppercase tracking-widest text-primary">Devcon SEA</h3>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-primary">Devcon Mumbai</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-xs text-white/30 font-bold mb-1">Devcon Interest</p>

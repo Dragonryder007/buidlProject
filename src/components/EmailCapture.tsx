@@ -19,9 +19,9 @@ const EmailCapture = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       // Store locally as well
-      const waitlist = JSON.parse(localStorage.getItem('build3_waitlist') || '[]');
+      const waitlist = JSON.parse(localStorage.getItem('buidl_waitlist') || '[]');
       waitlist.push({ email, timestamp: new Date().toISOString() });
-      localStorage.setItem('build3_waitlist', JSON.stringify(waitlist));
+      localStorage.setItem('buidl_waitlist', JSON.stringify(waitlist));
       
       setStatus('success');
       setEmail('');
@@ -41,7 +41,7 @@ const EmailCapture = () => {
             NOT READY TO <span className="gradient-text">APPLY</span> YET?
           </h2>
           <p className="text-white/60 mb-10 text-lg">
-            Join the waitlist to receive updates about future BUILD3 WEEK cohorts and exclusive ecosystem news.
+            Join the waitlist to receive updates about future BUIDL3 cohorts and exclusive ecosystem news.
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">

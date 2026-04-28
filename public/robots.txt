@@ -1,0 +1,10 @@
+# robots.txt for BUIDL3
+# Update the SITE URL below to your production domain
+User-agent: *
+Allow: /
+
+# Disallow any admin or private paths
+Disallow: /admin/
+
+# Sitemap (update with your production domain)
+Sitemap: https://buidl3.xyz/sitemap.xml
