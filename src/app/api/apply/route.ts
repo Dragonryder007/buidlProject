@@ -65,9 +65,9 @@ async function ensureTable() {
   const createSQL = `
     CREATE TABLE IF NOT EXISTS applications (
       id BIGINT PRIMARY KEY,
-      payload JSON NOT NULL,
+      payload LONGTEXT NOT NULL,
       status VARCHAR(50) DEFAULT 'Applied',
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
   `;
   await pool.query(createSQL);
@@ -104,9 +104,12 @@ export async function POST(req: Request) {
     await pool!.execute(insertSQL, [id, JSON.stringify(data), status, new Date(createdAt)]);
 
     return NextResponse.json({ success: true, data: { ...data, id, status, createdAt } });
-  } catch (error) {
+  } catch (error: any) {
     console.error('API Error (POST):', error);
-    return NextResponse.json({ success: false, message: 'Internal Server Error' }, { status: 500 });
+    const showErr = process.env.DEBUG_SQL_ERRORS === 'true' || process.env.NODE_ENV !== 'production';
+    const body: any = { success: false, message: 'Internal Server Error' };
+    if (showErr) body.error = error?.message || String(error);
+    return NextResponse.json(body, { status: 500 });
   }
 }
 
