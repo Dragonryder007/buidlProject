@@ -9,24 +9,24 @@ const EventsSection = () => {
   const events = [
     {
       title: "BUIDL3 Cohort #1",
-      description: "Builders shipped real Ethereum products in a high-intensity 3-week sprint.",
-      image: "/events/event1.png",
+      description: "3-week builder cohort. 50+ developers. Multi-chain builds (incl. Stellar). → BUIDL3 pilot execution",
+      image: "/events/christuni.jpeg",
       link: "https://lu.ma/build3-1",
       date: "Aug 2024"
     },
     {
-      title: "Ethereum India Meetup",
-      description: "Connecting the next generation of Indian developers with global ecosystem leaders.",
-      image: "/events/event2.png",
-      link: "https://lu.ma/eth-india",
-      date: "July 2024"
+      title: "BUILDING THE OPEN FUTURE",
+      description: "Cypherpunk Bitcoin-focused meetup. 100+ attendees (devs + founders). Focus: freedom tech & infra. → Community activation",
+      image: "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,background=white,quality=75,width=400,height=400/event-covers/zs/80b29644-1731-49b7-a8b2-916161176e10.png",
+      link: "https://luma.com/5pew07dw",
+      date: "July 2025"
     },
     {
-      title: "Onchain Summer Sprint",
-      description: "A focused week of buidling on Base and Optimism L2 stacks.",
-      image: "/events/event3.png",
-      link: "https://lu.ma/onchain-summer",
-      date: "June 2024"
+      title: "WEB3 DECODED: Hype, Hope & What Comes Next.",
+      description: "University onboarding session. Students + early devs. Intro to blockchain & Web3. → Developer funnel",
+      image: "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,background=white,quality=75,width=400,height=400/event-covers/31/bab71ab0-ab70-4f37-ac9e-5af4af6ac8a9.png",
+      link: "https://luma.com/s2zbw317",
+      date: "July 2025"
     }
   ];
 
@@ -60,12 +60,7 @@ const EventsSection = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute top-4 left-4">
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 text-white/90 text-xs font-black uppercase tracking-widest">
-                    <Calendar className="w-3 h-3" />
-                    {event.date}
-                  </div>
-                </div>
+                
                 <div className="absolute top-4 right-4">
                   <div className="px-3 py-1.5 rounded-xl bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[10px] font-black uppercase tracking-widest">
                     Luma
@@ -74,10 +69,17 @@ const EventsSection = () => {
               </div>
 
               {/* Content */}
+              <div className="left-4">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 text-white/90 text-xs font-black uppercase tracking-widest">
+                  <Calendar className="w-3 h-3" />
+                  {event.date}
+                </div>
+              </div>
               <div className="p-8 flex flex-col flex-1">
                 <h3 className="text-2xl font-black mb-4 tracking-tight uppercase group-hover:text-primary transition-colors">
                   {event.title}
                 </h3>
+                
                 <p className="text-white/50 text-sm leading-relaxed mb-8 flex-1">
                   {event.description}
                 </p>

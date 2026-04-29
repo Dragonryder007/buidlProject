@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import TicketTimer from './TicketTimer';
 
 const Hero = () => {
     return (
@@ -53,10 +52,6 @@ const Hero = () => {
                             <p className="text-lg text-white/60 leading-relaxed max-w-2xl mx-auto">
                                 Pre-Devcon sprints, university activations, and a final Ethereum hacker house producing real GitHub output for the ecosystem.
                             </p>
-                        </div>
-
-                        <div className="mt-4 w-full flex justify-center mb-12">
-                            <TicketTimer targetDate="2026-05-12T15:00:00Z" />
                         </div>
                         
                         <div className="flex flex-col items-center gap-8">

@@ -58,7 +58,7 @@ const Ecosystem = () => {
                                 BUIDL3 AT <span className="text-secondary">Devcon Mumbai</span>
                             </h2>
                             <p className="text-white/60 text-lg leading-relaxed">
-                                Devcon is the ultimate gathering for the Ethereum ecosystem. We provide merit-based support for tickets and housing to selected BUIDL3 WEEK participants. 
+                                Devcon is the ultimate gathering for the Ethereum ecosystem. We provide merit-based support for tickets and housing to selected BUIDL3 participants. 
                                 <span className="block mt-4 font-bold text-white">Limited availability. Merit-based selection only.</span>
                             </p>
                             <div className="flex flex-wrap gap-4 pt-4">
@@ -113,7 +113,7 @@ const Ecosystem = () => {
                         </div>
                         <h3 className="text-2xl font-bold">Credibility & Trust</h3>
                         <p className="text-white/60 leading-relaxed">
-                            Backed by CryptoMondays and Cypherpunk Events, BUIDL3 WEEK is a recognized name in the global buidler ecosystem.
+                            Backed by CryptoMondays and Cypherpunk Events, BUIDL3 is a recognized name in the global buidler ecosystem.
                         </p>
                         <div className="flex gap-4">
                             <div className="px-4 py-1.5 rounded-full bg-white/5 text-xs font-bold border border-white/10">VERIFIED PROGRAM</div>

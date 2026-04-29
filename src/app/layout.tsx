@@ -18,7 +18,7 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 export const metadataBase = new URL(SITE_URL);
 
 export const metadata: Metadata = {
-  title: "BUIDL3 WEEK – BUIDL3 at Devcon",
+  title: "BUIDL3 – BUIDL3 at Devcon",
   description:
     "The elite buidler pipeline for the next generation of Web3 pioneers. Join us at Devcon Mumbai and ship real products.",
   keywords: [
@@ -42,24 +42,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "BUIDL3 WEEK – BUIDL3 at Devcon",
+    title: "BUIDL3 – BUIDL3 at Devcon",
     description:
       "The elite buidler pipeline for the next generation of Web3 pioneers. Join us at Devcon Mumbai and ship real products.",
     url: SITE_URL,
-    siteName: "BUIDL3 WEEK",
+    siteName: "BUIDL3",
     images: [
       {
         url: `${SITE_URL}/events/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "BUIDL3 WEEK",
+        alt: "BUIDL3 at Devcon Mumbai",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BUIDL3 WEEK – BUIDL3 at Devcon",
+    title: "BUIDL3 – BUIDL3 at Devcon",
     description:
       "The elite buidler pipeline for the next generation of Web3 pioneers.",
     images: [`${SITE_URL}/events/og-image.png`],
@@ -74,7 +74,7 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "name": "BUIDL3 WEEK",
+      "name": "BUIDL3",
       "url": SITE_URL,
       "logo": `${SITE_URL}/logos/logo.png`,
       "sameAs": [
@@ -85,7 +85,7 @@ const jsonLd = {
     {
       "@type": "WebSite",
       "url": SITE_URL,
-      "name": "BUIDL3 WEEK",
+      "name": "BUIDL3",
       "potentialAction": {
         "@type": "SearchAction",
         "target": `${SITE_URL}/?s={search_term_string}`,

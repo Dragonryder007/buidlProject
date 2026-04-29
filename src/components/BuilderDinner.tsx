@@ -36,7 +36,7 @@ const BuilderDinner = () => {
 
                             <div className="space-y-6 text-lg text-white/70 leading-relaxed">
                                 <p>
-                                    During Devcon week, selected <span className="text-white font-bold tracking-tight">BUIDL3</span> builders get access to a private dinner experience inside the Jio World Convention ecosystem (NMACC district).
+                                    During Devcon Mumbai 2026, selected <span className="text-white font-bold tracking-tight">BUIDL3</span> builders get access to a private dinner experience inside the Jio World Convention ecosystem (NMACC district).
                                 </p>
                                 <p className="italic font-medium border-l-2 border-primary pl-6">
                                     An intimate, closed-room setting designed for real conversations—not networking noise.

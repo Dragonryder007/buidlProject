@@ -23,7 +23,7 @@
     "bestProject": "Built a decentralized exchange on Ethereum using Solidity and React. Lead Dev. Link: https://persistent.dex",
     "secondProject": "",
     "builtInWeb3": "Yes",
-    "status": "Applied",
+    "status": "Shortlisted",
     "createdAt": "2026-04-28T09:00:30.566Z"
   },
   {
@@ -49,7 +49,33 @@
     "bestProject": "awertfgyhujikl",
     "secondProject": "asdfcgvbhnjmk,",
     "builtInWeb3": "Yes",
-    "status": "Applied",
+    "status": "Rejected",
     "createdAt": "2026-04-28T09:08:42.130Z"
+  },
+  {
+    "id": 1777498573679,
+    "name": "NETRA MONI BORA",
+    "email": "tech@alphanumerouno.in",
+    "phone": "+919731762702",
+    "location": "Bengaluru, Karnataka",
+    "gitHub": "https://github.com/drDreCypherpunk/buidl3",
+    "linkedinUrl": "",
+    "userRole": "Freelance Developer",
+    "web3Context": "rrfeevreervervever",
+    "whySelectYou": "etertverververvrev",
+    "interests": [
+      "AI + Web3"
+    ],
+    "weeklyCommitment": "< 5 hours",
+    "fullCommitment": "Yes",
+    "hackerHouseInterest": "Yes",
+    "seriousBuidlerEssay": "errvgrgvrvgergrgrg",
+    "telegram": "@buidl3",
+    "planToBuild": "test testtesttesttesttesttesttesttesttesttest",
+    "bestProject": "testssss",
+    "secondProject": "testtsst",
+    "builtInWeb3": "Yes",
+    "status": "Selected",
+    "createdAt": "2026-04-29T21:36:13.679Z"
   }
 ]

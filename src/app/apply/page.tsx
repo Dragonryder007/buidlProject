@@ -9,6 +9,7 @@ import axios from 'axios';
 export default function ApplyPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,7 +37,7 @@ export default function ApplyPage() {
     e.preventDefault();
     setLoading(true);
     
-    try {
+        try {
       const payload = {
         id: Date.now(),
         name: formData.name,
@@ -62,18 +63,20 @@ export default function ApplyPage() {
         createdAt: new Date().toISOString()
       };
 
-      // 1. Save to Local API
-      await axios.post('/api/apply', payload);
+            // 1. Save to Local API
+            const res = await axios.post('/api/apply', payload);
+            if (!res.data || !res.data.success) {
+                throw new Error(res.data?.message || 'Submission failed');
+            }
 
-      // 2. Save to localStorage (as backup for the dashboard)
-      const existing = JSON.parse(localStorage.getItem('buidl_applications') || '[]');
-      localStorage.setItem('buidl_applications', JSON.stringify([payload, ...existing]));
+            // 2. Save to localStorage (as backup for the dashboard)
+            const existing = JSON.parse(localStorage.getItem('buidl_applications') || '[]');
+            localStorage.setItem('buidl_applications', JSON.stringify([payload, ...existing]));
 
-      setSubmitted(true);
+            setSubmitted(true);
     } catch (err) {
-      console.error('Submission failed:', err);
-      // Fallback
-      setSubmitted(true);
+            console.error('Submission failed:', err);
+            setError((err as any)?.message || 'Submission failed');
     } finally {
       setLoading(false);
     }
@@ -168,7 +171,7 @@ export default function ApplyPage() {
           </motion.div>
 
           {/* Warning Section */}
-          <motion.div
+                    <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -186,6 +189,13 @@ export default function ApplyPage() {
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-red-400 rounded-full"></span> Low-effort or incomplete applications will be rejected</li>
             </ul>
           </motion.div>
+
+                    {error && (
+                        <div className="glass-card p-6 border-red-400/20 bg-red-500/5 mb-8">
+                            <p className="text-red-300 font-black uppercase tracking-widest text-sm">Submission Error</p>
+                            <p className="text-white/70 text-sm mt-2">{error}</p>
+                        </div>
+                    )}
 
           <form onSubmit={handleSubmit} className="space-y-12">
             {/* Section 1: Basic Information */}

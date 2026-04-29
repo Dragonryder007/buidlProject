@@ -5,6 +5,7 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Filter, Loader2, RefreshCw, Search, Calendar, ChevronDown, Phone, Mail, Github, Compass, Linkedin, Globe, ExternalLink, X, CheckCircle, XCircle, Clock, User, Tag, Zap, Home } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface Application {
   id: number;
@@ -31,6 +32,16 @@ interface Application {
 }
 
 const AdminPage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Validate admin cookie; redirect to login if invalid
+    fetch('/api/admin/validate', { credentials: 'include' })
+      .then((res) => {
+        if (!res.ok) router.push('/admin/login');
+      })
+      .catch(() => router.push('/admin/login'));
+  }, [router]);
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -67,17 +78,30 @@ const AdminPage = () => {
     fetchApplications();
   }, []);
 
-  const updateStatus = (id: number, status: string, e: React.MouseEvent) => {
-    e.stopPropagation();
+  const updateStatus = async (id: number, status: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    // optimistic UI update
+    setApplications(apps => apps.map(app => app.id == id ? { ...app, status } : app));
     try {
-      // Use loose equality (==) to handle number/string ID mismatches from localStorage
-      setApplications(apps => apps.map(app => app.id == id ? { ...app, status } : app));
-
+      // Update local backup
       const localApps = JSON.parse(localStorage.getItem('buidl_applications') || '[]');
       const updatedLocal = localApps.map((a: any) => a.id == id ? { ...a, status } : a);
       localStorage.setItem('buidl_applications', JSON.stringify(updatedLocal));
+
+      // Persist to server
+      const res = await fetch('/api/apply/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status }),
+      });
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        throw new Error(json.message || 'Failed to update status');
+      }
     } catch (err) {
       console.error('Error updating status:', err);
+      // revert UI by refetching authoritative data
+      fetchApplications();
     }
   };
 
@@ -136,6 +160,20 @@ const AdminPage = () => {
             >
               <RefreshCw className={`w-5 h-5 ${refreshing ? 'animate-spin' : ''}`} />
             </button>
+              <button
+                onClick={async () => {
+                  try {
+                    await fetch('/api/admin/logout', { method: 'POST', credentials: 'include' });
+                  } catch (err) {
+                    console.error('Logout failed', err);
+                  } finally {
+                    router.push('/admin/login');
+                  }
+                }}
+                className="bg-white/5 border border-white/10 p-3 rounded-xl hover:bg-white/10 transition-all"
+              >
+                Logout
+              </button>
           </div>
         </div>
 
@@ -495,7 +533,7 @@ const AdminPage = () => {
 
                 {/* Why Join */}
                 <div className="glass-card p-6 space-y-4 border-white/5">
-                  <h3 className="text-[10px] font-black uppercase tracking-widest text-primary">Why BUIDL3 WEEK?</h3>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-primary">Why BUIDL3?</h3>
                   <p className="text-sm text-white/80 bg-black/30 rounded-xl p-4 border border-white/5 leading-relaxed">
                     {selectedProfile.whySelectYou || '—'}
                   </p>
